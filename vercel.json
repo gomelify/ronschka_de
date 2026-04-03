@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/michelles-apotheke",
+      "destination": "https://michellesgamevercel.vercel.app",
+      "permanent": false
+    },
+    {
+      "source": "/superLisaRun",
+      "destination": "https://superlisarun.vercel.app",
+      "permanent": false
+    }
+  ]
+}

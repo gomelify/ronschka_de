@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
       "source": "/michelles-apotheke",
       "destination": "https://michellesgamevercel.vercel.app/michelles-apotheke"
     },

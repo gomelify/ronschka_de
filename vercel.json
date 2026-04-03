@@ -35,6 +35,18 @@
     {
       "source": "/superLisaRun/:path*",
       "destination": "https://superlisarun.vercel.app/superLisaRun/:path*"
+    },
+    {
+      "source": "/palisaron",
+      "destination": "https://superlisarun.vercel.app/superLisaRun"
+    },
+    {
+      "source": "/palisaron/",
+      "destination": "https://superlisarun.vercel.app/superLisaRun/"
+    },
+    {
+      "source": "/palisaron/:path*",
+      "destination": "https://superlisarun.vercel.app/superLisaRun/:path*"
     }
   ]
 }

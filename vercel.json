@@ -5,6 +5,10 @@
       "destination": "https://michellesgamevercel.vercel.app/michelles-apotheke"
     },
     {
+      "source": "/michelles-apotheke/",
+      "destination": "https://michellesgamevercel.vercel.app/michelles-apotheke/"
+    },
+    {
       "source": "/michelles-apotheke/:path*",
       "destination": "https://michellesgamevercel.vercel.app/michelles-apotheke/:path*"
     },
@@ -19,6 +23,10 @@
     {
       "source": "/superLisaRun",
       "destination": "https://superlisarun.vercel.app/superLisaRun"
+    },
+    {
+      "source": "/superLisaRun/",
+      "destination": "https://superlisarun.vercel.app/superLisaRun/"
     },
     {
       "source": "/superLisaRun/:path*",

@@ -1,14 +1,28 @@
 {
-  "redirects": [
+  "rewrites": [
     {
       "source": "/michelles-apotheke",
-      "destination": "https://michellesgamevercel.vercel.app",
-      "permanent": false
+      "destination": "https://michellesgamevercel.vercel.app/michelles-apotheke"
+    },
+    {
+      "source": "/michelles-apotheke/:path*",
+      "destination": "https://michellesgamevercel.vercel.app/michelles-apotheke/:path*"
+    },
+    {
+      "source": "/michellesApotheke",
+      "destination": "https://michellesgamevercel.vercel.app/michelles-apotheke"
+    },
+    {
+      "source": "/michellesApothekes",
+      "destination": "https://michellesgamevercel.vercel.app/michelles-apotheke"
     },
     {
       "source": "/superLisaRun",
-      "destination": "https://superlisarun.vercel.app",
-      "permanent": false
+      "destination": "https://superlisarun.vercel.app/superLisaRun"
+    },
+    {
+      "source": "/superLisaRun/:path*",
+      "destination": "https://superlisarun.vercel.app/superLisaRun/:path*"
     }
   ]
 }

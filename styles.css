@@ -23,7 +23,15 @@ body {
   min-height: 100%;
 }
 
+html {
+  background:
+    radial-gradient(circle at 12% 15%, rgba(255, 46, 199, 0.24), transparent 37%),
+    radial-gradient(circle at 83% 20%, rgba(0, 230, 255, 0.22), transparent 33%),
+    linear-gradient(135deg, var(--bg-deep) 0%, #120030 44%, var(--bg-mid) 100%);
+}
+
 body {
+  min-height: 100dvh;
   background:
     radial-gradient(circle at 12% 15%, rgba(255, 46, 199, 0.24), transparent 37%),
     radial-gradient(circle at 83% 20%, rgba(0, 230, 255, 0.22), transparent 33%),
@@ -31,6 +39,8 @@ body {
   color: var(--ink);
   font-family: "Space Grotesk", sans-serif;
   overflow-x: hidden;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .bg-blur {

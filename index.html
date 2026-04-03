@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#0a1d33" />
-    <meta name="theme-color" content="#0a1d33" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0a1d33" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#050507" />
+    <meta name="theme-color" content="#050507" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#050507" media="(prefers-color-scheme: dark)" />
     <meta name="color-scheme" content="light dark" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -13,7 +13,7 @@
     <title>Ronschka Games</title>
     <meta
       name="description"
-      content="Zwei Spiele, ein klarer Einstieg: Michelle's Apotheke und Palisaron."
+      content="Ronschka Games mit Michelle's Apotheke und Super Lisa Run."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,74 +27,129 @@
     <div class="gradient-orb gradient-orb-a" aria-hidden="true"></div>
     <div class="gradient-orb gradient-orb-b" aria-hidden="true"></div>
     <div class="gradient-orb gradient-orb-c" aria-hidden="true"></div>
+    <div class="cursor-aurora" aria-hidden="true"></div>
 
     <main class="page">
-      <header class="hero">
-        <p class="hero-kicker">Ronschka Games</p>
-        <h1>Wähle dein Spiel</h1>
-        <p class="hero-copy">
-          Zwei Projekte, direkt sichtbar auf Handy und Desktop. Tippe auf eine Karte und starte
-          sofort.
-        </p>
+      <header class="hero" aria-label="Ronschka Games">
+        <h1 class="sr-only">Ronschka Games</h1>
+        <p class="hero-mark">RONSCHKA</p>
+        <p class="hero-mark hero-mark-sub">GAMES</p>
       </header>
 
       <section class="game-grid" aria-label="Spielauswahl">
         <article class="game-card">
           <a class="game-link" href="/michelles-apotheke" aria-label="Michelle's Apotheke öffnen">
             <div class="media-wrap">
-              <video
-                src="./assets/michelles_apotheke.mp4"
-                autoplay
-                muted
-                loop
-                playsinline
-                webkit-playsinline
-                preload="metadata"
-              ></video>
-              <span class="media-shine" aria-hidden="true"></span>
+              <div class="media-clip">
+                <video
+                  src="./assets/michelles_apotheke.mp4"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  webkit-playsinline
+                  preload="metadata"
+                ></video>
+                <span class="media-shine" aria-hidden="true"></span>
+              </div>
             </div>
-            <div class="card-body">
+            <div class="logo-plaque logo-plaque-michelles" aria-hidden="true">
               <img
                 class="game-logo"
                 src="./assets/michelles_apotheke_logo.png"
                 alt="Logo Michelle's Apotheke"
                 loading="lazy"
               />
-              <h2>Michelle&apos;s Apotheke</h2>
-              <p>Story-orientiertes Spielerlebnis mit klarer Nutzerführung.</p>
-              <span class="card-cta">Jetzt öffnen</span>
             </div>
           </a>
         </article>
 
         <article class="game-card">
-          <a class="game-link" href="/palisaron" aria-label="Palisaron öffnen">
+          <a class="game-link" href="/superLisaRun" aria-label="Super Lisa Run öffnen">
             <div class="media-wrap">
-              <video
-                src="./assets/superLisaRun.mp4"
-                autoplay
-                muted
-                loop
-                playsinline
-                webkit-playsinline
-                preload="metadata"
-              ></video>
-              <span class="media-shine" aria-hidden="true"></span>
+              <div class="media-clip">
+                <video
+                  src="./assets/superLisaRun.mp4"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  webkit-playsinline
+                  preload="metadata"
+                ></video>
+                <span class="media-shine" aria-hidden="true"></span>
+              </div>
             </div>
-            <div class="card-body">
+            <div class="logo-plaque logo-plaque-super" aria-hidden="true">
               <img
                 class="game-logo"
                 src="./assets/superLisaRun_logo.png"
-                alt="Logo Palisaron"
+                alt="Logo Super Lisa Run"
                 loading="lazy"
               />
-              <h2>Palisaron</h2>
-              <p>Arcade-Flow mit direktem Einstieg und schnellem Spielfeeling.</p>
-              <span class="card-cta">Jetzt öffnen</span>
             </div>
           </a>
         </article>
       </section>
     </main>
+    <script>
+      (() => {
+        const aura = document.querySelector(".cursor-aurora");
+        if (!aura) return;
+
+        const supportsFinePointer = window.matchMedia("(pointer: fine)").matches;
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!supportsFinePointer || reducedMotion) {
+          aura.style.display = "none";
+          return;
+        }
+
+        let rafId = 0;
+        let targetX = 0;
+        let targetY = 0;
+        let currentX = 0;
+        let currentY = 0;
+
+        const center = () => {
+          targetX = window.innerWidth * 0.5;
+          targetY = window.innerHeight * 0.32;
+          currentX = targetX;
+          currentY = targetY;
+          aura.style.transform = "translate3d(0px, 0px, 0)";
+        };
+
+        center();
+
+        const loop = () => {
+          currentX += (targetX - currentX) * 0.14;
+          currentY += (targetY - currentY) * 0.14;
+          const tx = currentX - window.innerWidth * 0.5;
+          const ty = currentY - window.innerHeight * 0.5;
+          aura.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+
+          if (Math.abs(targetX - currentX) > 0.2 || Math.abs(targetY - currentY) > 0.2) {
+            rafId = requestAnimationFrame(loop);
+          } else {
+            rafId = 0;
+          }
+        };
+
+        const queue = (x, y) => {
+          targetX = x;
+          targetY = y;
+          if (!rafId) {
+            rafId = requestAnimationFrame(loop);
+          }
+        };
+
+        window.addEventListener("pointermove", (event) => queue(event.clientX, event.clientY), {
+          passive: true
+        });
+        window.addEventListener("pointerleave", () => queue(window.innerWidth * 0.5, window.innerHeight * 0.32), {
+          passive: true
+        });
+        window.addEventListener("resize", center, { passive: true });
+      })();
+    </script>
   </body>
 </html>

@@ -82,7 +82,7 @@ body {
 .shell {
   position: relative;
   z-index: 2;
-  width: min(1140px, calc(100% - 2.5rem));
+  width: min(1260px, calc(100% - 2.5rem));
   margin: 1.5rem auto;
   padding: 1.1rem;
   background: linear-gradient(165deg, rgba(37, 4, 76, 0.8), rgba(20, 2, 44, 0.62));
@@ -111,6 +111,7 @@ body {
   transform: translateY(0);
   transition: transform 0.32s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  width: 100%;
 }
 
 .project-card:hover,
@@ -126,7 +127,8 @@ body {
   position: relative;
   border-radius: 14px;
   overflow: hidden;
-  min-height: 220px;
+  aspect-ratio: 16 / 10;
+  max-height: min(45vh, 390px);
   border: 1px solid rgba(255, 255, 255, 0.19);
 }
 
@@ -136,6 +138,10 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.media-frame img {
+  object-position: center 28%;
 }
 
 .shine {
@@ -180,6 +186,23 @@ body {
   }
 
   .media-frame {
+    aspect-ratio: 3 / 4;
+    max-height: none;
     min-height: 180px;
+  }
+}
+
+@media (min-width: 960px) {
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .project-card {
+    padding: 0.8rem;
+  }
+
+  .project-title {
+    font-size: clamp(1.15rem, 1.5vw, 1.4rem);
   }
 }
